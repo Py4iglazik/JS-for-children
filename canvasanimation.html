@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas animation.</title>
+</head>
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.js"></script> -->
+    <script>
+
+        // let size = 0;
+
+        // setInterval(function() {
+        //     ctx.clearRect(0,0, 100, 100);
+        //     ctx.fillRect(0, 0, size, size);
+
+        //     size++;
+        //     console.log(size);
+        //     if (size > 100) {
+        //         size = 0;
+        //     }
+        // }, 30);
+
+        
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        let circle = function(x, y, radius, fillCircle) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI*2, fillCircle);
+            if (fillCircle) {
+                ctx.fill();
+            } else 
+                ctx.stroke();
+        };
+
+        let drawBee = function(x, y) {
+            ctx.lineWidth = 3;
+            ctx.fillStyle = "Gold";
+            ctx.strokestyle = "Black"
+            circle(x, y, 10, true);
+            circle(x, y, 10, false);
+            circle(x - 10, y - 10, 5, false);
+            circle(x + 10, y - 10, 5, false);
+            circle(x - 2, y - 2, 3, false);
+            circle(x + 2, y - 2, 3, false);
+        };
+
+        let update = function(coordinate) {
+            let offset = Math.random()*5 - 2.5;
+            coordinate+=offset;
+
+            if (coordinate > 200) {
+                coordinate = 200
+            };
+            if (coordinate < 0) {
+                coordinate = 0
+            };
+
+            return coordinate;
+        };
+
+        let x = 100;
+        let y = 100;
+
+        setInterval(function(){
+            ctx.clearRect(0, 0, 200, 200);
+            drawBee(x, y);
+            x = update(x);
+            y = update(y);
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = "Black";
+            ctx.strokeRect(0, 0, 200, 200)
+        }, 20);
+    </script>
+</body>

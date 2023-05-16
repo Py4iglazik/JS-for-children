@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>To find a treasure!</title>
+</head>
+<body>
+    <h1 id="heading">Let's try to find a treasure.</h1>
+    <img id="map" width=600 height=480
+        src="https://kartinkin.net/uploads/posts/2022-03/1646785992_7-kartinkin-net-p-karta-sokrovishch-kartinki-7.jpg">
+    <strong><p id="distance"></p></strong>
+    <p id="clicks"></p>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <script>
+        // let getRandomNumber = function (size) {
+        //     return Math.floor(Math.random()*size);
+        // };
+
+        //     let getDistance = function (event, target) {
+        //     let diffX = event.offsetX - target.x;
+        //     let diffY = event.offsetY - target.y;
+        //     return Math.sqrt((diffX*diffX) + (diffY*diffY));
+        // };
+
+        // let getDistanceHint = function(distance) {
+        //     if (distance < 10) {
+        //         return "You're burning!";
+        //     } else if (distance < 20) {
+        //         return "Very hot!";
+        //     } else if (distance < 40) {
+        //         return "Just hot";
+        //     } else if (distance < 80) {
+        //         return "That's warm)";
+        //     } else if (distance < 160) {
+        //         return "Cold..."
+        //     } else if (distance < 320) {
+        //         return "Freezing!";
+        //     } else {
+        //         return "So cold you're gonna die...";
+        //     }
+        // };
+
+        // let width = 500,
+        //     height = 400;
+        //     clicks = 0;
+
+        //     let target = {
+        //     x: getRandomNumber(width),
+        //     y: getRandomNumber(height)
+        // };
+
+        // $("#map").click(function(event) {
+        //     clicks++;
+        //     let distance = getDistance(event, target);
+        //     let distanceHint = getDistanceHint(distance);
+        //     $("#distance").text(distanceHint);
+        //     if (distance < 8) {
+        //         alert ("You've done it! You've found the treasure!");
+        //         alert ("The number of your clicks is " + clicks + "!");
+        //     }
+        // });
+
+
+        let getRandomNumber = function(size) {
+            return Math.floor(Math.random()*size);
+        };
+
+        let getDistance = function (event, target) {
+            let diffX = event.offsetX - target.x;
+            let diffY = event.offsetY - target.y;
+            return Math.sqrt((diffX*diffX) + (diffY*diffY));
+        };
+
+        let getDistanceHint = function (distance) {
+            if (distance < 10) {
+                return "You're burning!";
+            } else if (distance < 20) {
+                return "Very hot.";
+            } else if (distance < 40) {
+                return "Just warm.";
+            } else if (distance < 80 ) {
+                return "That's still cold over here.";
+            } else if (distance < 160) {
+                return "That's very cold frankly speaking.";
+            } else if (distance < 320) {
+                return "I'm just fu**ing freezing!";
+            } else if (distance < 640) {
+                return "The North Pole";
+            }
+        };
+
+        let alarmAboutClicks = function (distance) {
+            if (distance < 10) {
+                return "You've got " + numberOfClicks(clicks) + " clicks!";
+            } else if (distance < 20) {
+                return "You've got " + numberOfClicks(clicks) + " clicks!";
+            } else if (distance < 40) {
+                return "You've got " + numberOfClicks(clicks) + " clicks!";
+            } else if (distance < 80 ) {
+                return "You've got " + numberOfClicks(clicks) + " clicks!";
+            } else if (distance < 160) {
+                return "You've got " + numberOfClicks(clicks) + " clicks!";
+            } else if (distance < 320) {
+                return "You've got " + numberOfClicks(clicks) + " clicks!";
+            } else if (distance < 640) {
+                return "You've got " + numberOfClicks(clicks) + " clicks!";
+            }
+        };
+
+        let numberOfClicks = function(clicks) {
+            return 20 - clicks;
+        };
+
+        let width = 600;
+        let length = 480;
+        let clicks = 0;
+
+        let target = {
+        x: getRandomNumber(width),
+        y: getRandomNumber(length)
+        };
+
+        $("#map").click(function(event) {
+            clicks++;
+            let distance = getDistance(event, target);
+            let getHint = getDistanceHint(distance);
+            // let numberClicks = numberOfClicks(clicks);
+            let alarmClicks = alarmAboutClicks(distance);
+            $("#distance").text(getHint);
+            $("#clicks").text(alarmClicks);
+            if (distance < 8) {
+                alert("You've won!");
+                alert("You've got " + clicks + " clicks!");
+                clicks = 0;
+            }
+            if (clicks > 19) {
+                alert ("You lost, get out of here!");
+                clicks = 0;
+            };
+        });
+
+
+
+    </script>
+</body>

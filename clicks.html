@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Interactive HTML</title>
+    </head>
+    <body>
+        <h1 id="heading">Hello world!</h1>
+        <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+        <script>
+
+            // let clickHandler = function () {
+            //     console.log("Клик " + event.pageX + " " + event.pageY);
+            // };
+            // $("h1").click(clickHandler);
+
+
+            // $("html").mousemove(function(event) {
+            //     $("#heading").offset({
+            //         left:event.pageX,
+            //         top:event.pageY
+            //     });
+            // });
+
+
+            let clickMover = (function (event) {
+                $("#heading").offset({
+                    left:event.pageX,
+                    top:event.pageY
+                });
+            });
+            $("html").click(clickMover)
+
+            // $("html").mousemove(function(event) {
+            //     $("#heading").offset({
+            //         left:event.pageX,
+            //         top:event.pageY
+            //     });
+            // });
+        </script>
+    </body>
+</html>

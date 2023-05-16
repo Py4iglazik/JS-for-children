@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Text in canvas</title>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        let width = canvas.width;
+        let height = canvas.height;
+
+        let score= 0;
+
+        let blockSize = 10;
+        let widthInBlocks = width/blockSize;
+        let heightInBlocks = height/blockSize;
+
+        let drawBorder = function() {
+            ctx.fillStyle = "Grey";
+            ctx.fillRect(0, 0, width, blockSize);
+            ctx.fillRect(0, 0, blockSize, height);
+            ctx.fillRect(width - blockSize, 0, blockSize, height);
+            ctx.fillRect(0, height - blockSize, width, blockSize);       
+        };
+
+        let drawScore = function() {
+            ctx.font = ("20px Arial");
+            ctx.fillStyle = "Black";
+            ctx.textBaseline = "top";
+            ctx.textAlign = "left";
+            ctx.fillText("Your score is " + score, blockSize, blockSize);
+        };
+
+        let drawGaveOver = function() {
+            ctx.font = ("40px Arial");
+            ctx.fillStyle = "Black";
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            ctx.fillText("Gave is over, loser!", width/2, height/2);
+        };
+
+        setInterval(function() {
+            ctx.clearRect(0, 0, width, height);
+            score++;
+            drawScore();
+            drawBorder();
+            drawGaveOver();
+        }, 100);
+
+    </script>
+</body>

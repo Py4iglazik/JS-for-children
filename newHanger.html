@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>New Hanger</title>
+    </head>
+
+    <body>
+        <h1>Welcome to the game!</h1>
+        <p><strong>Let's get started!</strong></p>
+            <script>
+                let name = prompt("What's your name?");
+                alert("Hello, " + name + "!");
+                let question = confirm("Are you ready to start the game?");
+                    if (question) {
+                        alert("Great!");
+                    } else {
+                        alert("I don't exept refusals!");
+                    }
+                alert("This is a game: 'Hanger'. Try to guess the word.");
+                let words = ["cat", "dog", "name", "old", "house", "tablet"],
+                    ourWord = words[Math.floor(Math.random()*words.length)],
+                    theWord = [];
+                    for (let i = 0; i < ourWord.length; i++) {
+                        theWord[i] = "_";
+                    }
+                    let remains = ourWord.length;
+                    while (remains > 0) {
+                        alert("Your word is: " + theWord.join(" ") + "." + " There are " + ourWord.length + " letters.");
+                        let answer = prompt("Please, write a letter.");
+                        if (answer === null) {
+                            break;
+                        } else if (answer.length !== 1) {
+                            alert("Please, write just one letter.");
+                        } else {
+                            let j = 0;
+                            while (j < ourWord.length) {
+                             if (ourWord[j] === answer) {
+                                theWord[j] = answer;
+                                remains--;
+                                }
+                                j++;
+                    }
+                }
+            }
+                    let finish = theWord.join("");
+                    alert("My congratulations, you've won the game! Your word is: " + finish + ".");
+
+            </script>
+    </body>
+</html>

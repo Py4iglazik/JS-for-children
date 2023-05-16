@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Object programming</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script>
+        let car = function(x, y) {
+            this.x = x;
+            this.y = y;
+            // draw:
+            // moveRight:
+            // speed:
+        };
+
+    //     let drawCar = function(car) {
+    //         let carHTML = '<img src="https://icon2.kisspng.com/20180320/lpq/kisspng-bmw-m5-sports-car-bmw-m3-bmw-cars-png-5ab1aa47e72279.3678354615215929039467.jpg">';
+
+    //     let carElement = $(carHTML);
+
+    //     carElement.css({
+    //         position: "absolute",
+    //         left: car.x,
+    //         top: car.y
+    //     });
+
+    //     $("body").append(carElement);
+    // };
+
+    // let tesla = new car(20, 20);
+    // let nissan = new car(100, 200);
+    // drawCar(tesla);
+    // drawCar(nissan);
+
+    car.prototype.draw = function() {
+        let carHTML = '<img src="https://lh5.googleusercontent.com/-rdVwhcwypkY/TVBcUanniUI/AAAAAAAAAAk/ectNG_WHTbU/s320/018_wallpaper.jpg">';
+
+        this.carElement = $(carHTML);
+
+        this.carElement.css({
+            position: "absolute",
+            left: this.x,
+            top: this.y,
+        });
+
+        $("body").append(this.carElement);
+    };
+
+    // car.prototype.speed = function(speed) {
+    //     this.x += this.speed;
+    //     let newSpeed = this.x;
+    //     console.log(newSpeed);
+    // };
+
+    // car.prototype.speed = function(speed) {
+    //     this.speed = this.x + speed;
+    //     console.log(this.speed);
+    // };
+
+    car.prototype.moveRight = function() {
+        this.x+=Math.floor(Math.random()*5);
+        this.carElement.css({
+            left: this.x,
+            top: this.y
+        });
+        if (this.x > 500) {
+            this.x = 500;
+            clearInterval(intervalIDtesla);
+            clearInterval(intervalIDnissan);
+        };
+        console.log(this.x);
+    };
+
+    car.prototype.moveLeft = function(speed) {
+        this.x-=Math.floor(Math.random()*50);
+        this.carElement.css({
+            left: this.x,
+            top: this.y
+        });
+    };
+
+    car.prototype.moveUp = function(speed) {
+        this.y-=speed;
+        this.carElement.css({
+            left: this.x,
+            top: this.y
+        });
+    };
+
+    car.prototype.moveDown = function(speed) {
+        this.y+=speed;
+        this.carElement.css({
+            left: this.x,
+            top: this.y
+        });
+    };
+
+    let intervalIDtesla = setInterval(function() {tesla.moveRight()}, 30);
+    let intervalIDnissan = setInterval(function() {nissan.moveRight()}, 30);
+
+    let nissan = new car(10, 250);
+    let tesla = new car (10, 20);
+
+    tesla.draw();
+    nissan.draw();
+
+    </script>
+</body>

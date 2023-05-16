@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script>
+        // $("body").append("That's my dude, Mickle!")
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        // for (let i = 0; i < 20; i++) {
+        //     ctx.fillRect(i*10, i*10, 40, 40);
+        // };
+
+        // let head = ctx.fillRect(50, 0, 50, 50);
+        // let neck = ctx.fillRect(70, 50, 10, 30);
+        // let arms = ctx.fillRect(0, 80, 150, 10);
+        // let body = ctx.fillRect(40, 90, 70, 70);
+        // let leftLeg = ctx.fillRect(40, 160, 10, 60);
+        // let rightLeg = ctx.fillRect(100, 160, 10, 60);
+
+        // ctx.lineWidth = 5;
+        // ctx.strokeStyle = "LimeGreen";
+        // ctx.strokeRect(10, 10, 50, 100);
+        // ctx.strokeStyle = "DarkViolet";
+        // ctx.strokeRect(65, 10, 50, 100);
+        // ctx.strokeStyle = "MediumTurquoise";
+        // ctx.strokeRect(120, 10, 50, 100);
+        
+        // ctx.strokeStyle = "Red";
+        // ctx.strokeRect(50, 10, 50, 50);
+
+        // ctx.lineWidth = 5;
+        // ctx.fillStyle = "Red";
+        // ctx.beginPath();
+        // ctx.moveTo(50, 50);
+        // ctx.lineTo(50, 100);
+        // ctx.lineTo(100, 100);
+        // ctx.lineTo(100, 50);
+        // ctx.lineTo(75, 10);
+        // ctx.lineTo(50, 50);
+        // ctx.fill();
+
+        // ctx.lineWidth = 2;
+        // ctx.strokeStyle = "Purple";
+
+        // ctx.beginPath();
+        // ctx.arc(50, 50, 20, 0, Math.PI/2, true);
+        // ctx.stroke();
+
+        // ctx.fillStyle = "Green";
+        // ctx.beginPath();
+        // ctx.arc(100, 50, 20, 0, Math.PI*2, true);
+        // ctx.fill();
+
+        // ctx.beginPath();
+        // ctx.arc(150, 50, 20, Math.PI, Math.PI/2, false);
+        // ctx.stroke();
+
+        // ctx.strokeStyle = "Black";
+        // ctx.lineWidth = 2;
+        // let random = Math.floor(Math.random()*30);
+        // ctx.beginPath();
+        // for (let i = 0; i < 5; i++) {
+        //     ctx.arc(i*50, i*50, 20, 0, Math.PI*2, false);
+        //     ctx.moveTo(i*50, i*50);
+        // };
+        // ctx.stroke();
+
+        // let circle = function(x, y, radius, fillCircle) {
+        //     ctx.beginPath();
+        //     ctx.arc(x, y, radius, 0, Math.PI*2, fillCircle);
+        //     if (fillCircle === true) {
+        //         ctx.fill();
+        //     } else if (fillCircle === false) {
+        //         ctx.stroke();
+        //     };
+        // };
+
+
+        // The first task!
+        // let drawSnowman = function(x, y) {
+        // ctx.lineWidth = 4;
+        // ctx.storkeStyle = "Black";
+        // let head = circle(x, y - 70, 28, false);
+        // let body = circle(x, y, 40, false);
+        // ctx.fillStyle = "Black";
+        // let eyeOne = circle(x - 10, y - 75, 5, true);
+        // let eyTwo = circle(x + 10, y - 75, 5, true);
+        // let buttonOne = circle(x, y - 20, 5, true);
+        // let buttonTwo = circle(x, y, 5, true);
+        // let buttonThree = circle(x, y + 20, 5, true);
+        // ctx.fillStyle = "Yellow";
+        // let mouth = circle(x, y - 60, 5, true);
+        // };
+        // drawSnowman(100, 100);
+        // drawSnowman(200, 200);
+
+
+        // The second task!
+    //     let drawPoints = function(points) {
+    //     ctx.beginPath();
+    //     if (points === points) {
+    //         ctx.strokeStyle = "Red";
+    //     } if (points === mysteryPoints) {
+    //         ctx.strokeStyle = "Blue";
+    //     };
+    //     ctx.lineWidth = 4;
+    //     ctx.moveTo(points[0][0], points[0][1]);
+    //     for (let i = 1; i < points.length; i++) {
+    //         ctx.lineTo(points[i][0], points[i][1]);
+    //     };
+    //     ctx.stroke();
+    // };
+    //     let points = [[150, 150], [150, 200], [200, 200], [200, 150], [150, 150]];
+    //     let mysteryPoints = [[50, 50], [50, 100], [25, 120], [100, 50], [70, 90], [100, 90], [70, 120]];
+
+    //     drawPoints(points);
+    //     drawPoints(mysteryPoints);
+
+        // The third task!
+        // let circle = function(event) {
+        // ctx.fillStyle = "Red";
+        // ctx.beginPath();
+        // ctx.arc(event.pageX, event.pageY, 3, 0, Math.PI*2, true);
+        // ctx.fill();
+        // };
+        // $("html").mousemove(circle);
+
+        
+    </script>
+</body>

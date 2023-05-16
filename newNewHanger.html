@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>The final hanger</title>
+
+</head>
+<body>
+    <h1><strong>Good luck and have fun!</strong></h1>
+    <canvas id="canvas" width = "400" length = "400"></canvas>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script>
+        let zeroQuestion = prompt("Hello! What's your name?");
+
+        let firstQuestion = confirm(zeroQuestion + ", that's the game 'the Hanger', are you ready to play?");
+
+        if (firstQuestion === true) {
+            alert("Perfect! Let's get started.");
+        } else {
+            alert("I don't accept any refusals! Let's get started.");
+        };
+
+
+
+        let oneOffSet = $("body").append("<p><strong>Click on me if you want to continue.</strong></p>");
+        oneOffSet.offset({left: 50});
+        $("h1").offset({left: 10});
+
+        let firstFunction = (function(event) {
+            let numberOfTries = 9;
+            let offSet = $("body").append("<p>You have <strong>" + numberOfTries + "</strong> tries!</p>");
+            offSet.offset({left: 105});
+            oneOffSet.offset({left: 50});
+            $("h1").offset({left: 10});
+        });
+        $("body").click(firstFunction);
+
+        let words = ["animal", "person", "tablet", "house"];
+        let randomWord = words[Math.floor(Math.random()*words.length)];
+    </script>
+</body>

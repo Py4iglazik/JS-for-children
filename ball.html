@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ball and walls</title>
+</head>
+<body>
+    <canvas id="canvas" width="700" height="700"></canvas>
+    <script>
+
+        let Ball = function() {
+            this.x = 350;
+            this.y = 350;
+            this.xSpeed = Math.random()*10 - 5;
+            this.ySpeed = Math.random()*10 - 5;
+            this.color = pickRandomWord();
+        };
+
+        let pickRandomWord = function() {
+            let colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+            let colorsS = colors[Math.floor(Math.random()*colors.length)]
+            return colorsS;
+        };
+
+        let circle = function (x, y, radius, fillCircle) {
+            ctx.beginPath();
+            ctx.strokeStyle = "Black";
+            ctx.lineWidth = 1;
+            ctx.arc(x, y, radius, 0, Math.PI*2, fillCircle);
+            if (fillCircle) {
+                ctx.fill();
+            } else {
+                ctx.stroke();
+            };
+        };
+
+        Ball.prototype.draw = function() {
+            ctx.fillStyle = this.color;
+            circle(this.x, this.y, 10, true);
+            circle(this.x, this.y, 10, false);
+        };
+
+
+        Ball.prototype.move = function() {
+            this.x+=this.xSpeed;
+            this.y+=this.ySpeed;
+        };
+
+        Ball.prototype.crash = function() {
+            if (this.x > width || this.x < 0) {
+                this.xSpeed = -this.xSpeed;
+            };
+            if (this.y > height || this.y < 0) {
+                this.ySpeed = -this.ySpeed;
+            };
+        };
+
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+
+        let width = canvas.width;
+        let height = canvas.height;
+
+        let ballsCount = 100;
+        let balls = [];
+        for (let i = 0; i < ballsCount; i++) {
+            let ball = new Ball();
+            balls.push(ball);
+        };
+
+        setInterval(function(){
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < ballsCount; i++) {
+                balls[i].draw();
+                balls[i].move();
+                balls[i].crash();
+            };
+            ctx.strokeRect(0, 0, 700, 700)
+        }, 20)
+
+    </script>
+</body>

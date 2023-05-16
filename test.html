@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>
+</head>
+<body>
+    <h1 id="main-heading">Hello world!</h1>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script>
+        // let headingElement = document.getElementById("main-heading");
+        // let newHeading = prompt("Choose a new one");
+        // // headingElement.innerHTML = newHeading;
+        // // console.log(headingElement.innerHTML);
+
+
+        // let newHeading = prompt("Choose a new one");
+        // $("#main-heading").text(newHeading);
+
+
+        // $("body").append("That's a new row!");
+
+
+        // for (let i = 0; i < 3; i++) {
+        //     let hobbies = prompt("What's you hobbies?");
+        //     $("body").append("<p>" + hobbies + "</p>")
+        // };
+
+
+        // for (let i = 0; i < 2; i++) {
+        //     $("#main-heading").text("This one is going to...!").fadeOut(1000).fadeIn(1000).slideUp(1000).slideDown(1000);
+        // };
+        // $("body").append("<p><strong>A NEW LINE</strong></p>");
+
+
+        // THE FIRST TASK
+        // $("#main-heading").text("My family!");
+
+        // let friends = ["Ilia", "Oleg", "Vitaly"];
+
+        // for (let i = 0; i < friends.length; i++) {
+        //     $("body").append("<p>" + friends[i] + "</p>");
+        // };
+        // $("p").hide(1).fadeIn(3000);
+        // $("p").append(" is the best!");
+        
+
+        // THE SECOND TASK
+    //     for (let i = 0; i < 3; i++) {
+    //         $("#main-heading").fadeOut((i+1)*1000).fadeIn((i+1)*1000);
+    // };
+
+
+        // THE THIRD TASK
+    // $("#main-heading").fadeOut(1000).delay(3000).fadeIn(1000);
+
+
+        // THE FORTH TASK
+    // $("#main-heading").fadeTo(2000, 0.1);
+
+    
+    // let timeUp = function() {
+    //     alert("Time's up!");
+    // };
+    // let timeoutID = setTimeout(timeUp, 5000);
+    // clearTimeout(timeoutID);
+
+    // let count = 5;
+    // let time = function () {
+    //     console.log("Your time is " + count);
+    //     count+=5;
+    // };
+    // let intervalID = setInterval(time, 5000);
+    // clearInterval(intervalID);
+
+//     let leftOffset = 0;
+//     let topOffset = 0;
+//     let movement = function() {
+//         $("#main-heading").offset({left:leftOffset, top:topOffset});
+//         leftOffset+=5;
+//         topOffset+=5;
+//         if (leftOffset > 200) {
+//             leftOffset = 0;
+//             topOffset = 0;
+//         };
+// };
+//     setInterval(movement, 1);
+
+
+    // let clickHandler = function(event) {
+    //     console.log("Click! " + event.pageX + " " + event.pageY);
+    // };
+    // $("#main-heading").click(clickHandler);
+
+
+    // $("html").mousemove(function(event) {
+    //     $("#main-heading").offset({
+    //         left: event.pageX,
+    //         top: event.pageY
+    //     });
+    // });
+
+    // let mover = function(event) {
+    //     $("#main-heading").offset({
+    //         left: event.pageX,
+    //         top: event.pageY
+    //     });
+    // };
+    // $("html").mousemove(mover);
+
+        // THE FIRST TASK
+        // let click = function(event) {
+        //     $("#main-heading").offset({
+        //         left: event.pageX,
+        //         top:event.pageY
+        //     });
+        // };
+        // $("html").click(click);
+
+        $("#main-heading").offset({left: 0, top: 0});
+
+        let leftOffset = 0,
+            topOffset = 0,
+            position = "right",
+            clicks = 10;
+
+        let square = function() {
+                if (position === "right") {
+                $("#main-heading").offset({left: leftOffset});
+                leftOffset+=2;
+                if (leftOffset > 200) {
+                    position = "down";
+                    leftOffset = 200;
+                };
+            };
+                if (position === "down") {
+                    $("#main-heading").offset({top: topOffset});
+                    topOffset+=2;
+                    if (topOffset > 200) {
+                        position = "left";
+                        topOffset = 200;
+                    };
+            };
+                if (position === "left") {
+                    $("#main-heading").offset({left: leftOffset});
+                    leftOffset-=2;
+                    if (leftOffset < 0) {
+                        position = "up";
+                        leftOffset = 0;
+                    };
+            };
+                if (position === "up") {
+                    $("#main-heading").offset({top: topOffset});
+                    topOffset-=2;
+                    if (topOffset < 0) {
+                        position = "right";
+                        topOffset = 0;
+                    };
+                };
+        };
+            let intervalID = setInterval(square, 50);
+            let faster = function() {
+                setInterval(square, 50);
+                clicks--;
+                console.log(clicks);
+                $("#main-heading").text("There are " + clicks + " times left!");
+                if (clicks === 0) {
+                    $("#main-heading").text("My congratulation!");
+                };
+            };
+                if (clicks === 0) {
+                    clearInterval(intervalID);
+                };
+            $("#main-heading").click(faster);
+            
+    </script>
+</body>
